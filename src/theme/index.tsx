@@ -1,12 +1,15 @@
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline, StyledEngineProvider } from '@mui/material';
-import { red } from '@mui/material/colors';
+import { blue, red } from '@mui/material/colors';
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: red[500],
+      main: '#525CEB',
+    },
+    secondary: {
+      main: '#3D3B40',
     },
   },
 
@@ -15,10 +18,10 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           '&.MuiButton-root': {
-            backgroundColor: 'red',
+            backgroundColor: '#525CEB',
             transition: 'background-color 0.3s',
             '&:hover': {
-              backgroundColor: 'blue',
+              backgroundColor: '#3D3B40',
             },
           },
         },
@@ -29,7 +32,6 @@ const theme = createTheme({
           style: {
             backgroundColor: '#FF5733',
             textTransform: 'none',
-            border: '2px dashed red',
           },
         },
       ],
@@ -38,10 +40,39 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           height: '40px',
-          border: '1px solid #f5f7f9',
           fontSize: '14px',
-          color: 'white',
-          backgroundColor: '#FF5733',
+          margin: '4px 0px',
+          backgroundColor: '#f5f7f9',
+          boxShadow: 'none',
+          border: '1px solid #f5f7f9',
+
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            border: '1px solid #C8C8C8	',
+          },
+          '&.Mui-focused': {
+            boxShadow: red[600],
+            '& .MuiOutlinedInput-notchedOutline': {
+              border: `1px solid #B0B0B0	`,
+            },
+          },
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          fontSize: '14px',
+          color: 'black',
+          margin: '4px 0px',
+        },
+      },
+    },
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          color: '#525CEB',
+          fontSize: '14px',
+          
         },
       },
     },
@@ -49,14 +80,32 @@ const theme = createTheme({
 
   typography: {
     h1: {
-      fontSize: '50px',
-      fontWeight: 700,
+      fontSize: '22px',
+      fontWeight: 1100,
     },
     h2: {
       fontWeight: 700,
     },
     h3: {
-      fontWeight: 700,
+      fontSize: '14px',
+    },
+
+    h4: {
+      fontSize: '14px',
+      color: 'black',
+      fontWeight: 500,
+    },
+
+    h5: {
+      fontSize: '12px',
+      color: 'black',
+      fontWeight: 500,
+    },
+    h6: {
+      fontSize: '12px',
+      fontWeight: 500,
+      textDecoration: 'underline',
+      color: '#525CEB',
     },
   },
 });

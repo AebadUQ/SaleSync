@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { Divider, useTheme } from '@mui/material';
 import {
   Box,
   Grid,
@@ -23,6 +24,7 @@ type FormData = {
   password: string;
 };
 const App = () => {
+  const theme = useTheme();
   const [showPassword, setShowPassword] = useState(false);
   const passwordInputRef = useRef<HTMLInputElement>(null);
   const {
@@ -36,25 +38,22 @@ const App = () => {
   return (
     <>
       <Grid container>
-        <Grid
-          item
-          xs={5}
-          className="border border-red-500 flex justify-center items-center"
-        >
-          <Box className="border border-black h-4/5 w-4/5 flex flex-col items-center">
-            <Box className="border border-black w-full flex flex-col items-center">
+        <Grid item sm={12} md={5} className=" flex justify-center items-center">
+          <Box className=" w-4/5 flex flex-col items-center">
+            <Box className=" w-full flex flex-col items-center">
               <img src={Images?.Logo} />
-              <Typography fontWeight={'bold'} mt={2} mb={1}>
+              <Typography fontWeight={'bold'} mt={2} mb={1} variant="h1">
                 Sign In
               </Typography>
-              <Typography>Please sign in to your account </Typography>
+              <Typography variant="h4">
+                Please sign in to your account{' '}
+              </Typography>
             </Box>
-            <Box className="w-full">
+            <Box className="w-full mt-10">
               <form onSubmit={onSubmit}>
                 <InputLabel>
                   Email Address <span className="text-red-500">*</span>
                 </InputLabel>
-
                 <OutlinedInput
                   id="email-login"
                   type="email"
@@ -63,14 +62,18 @@ const App = () => {
                   {...register('email')}
                   endAdornment={
                     <InputAdornment position="end">
-                      <MailOutlined style={{ fontSize: 14 }} />
+                      <MailOutlined
+                        style={{
+                          fontSize: 14,
+                          color: theme.palette.primary.main,
+                        }}
+                      />
                     </InputAdornment>
                   }
                 />
                 <InputLabel>
                   Password <span className="text-red-500">*</span>
                 </InputLabel>
-
                 <OutlinedInput
                   id="password-login"
                   type={showPassword ? 'text' : 'password'}
@@ -99,15 +102,69 @@ const App = () => {
                     </InputAdornment>
                   }
                 />
-                <Button fullWidth color="primary" variant="contained">
+                <Typography
+                  variant="h6"
+                  color="primary"
+                  className="text-right cursor-pointer"
+                >
+                  Forgot password?{' '}
+                </Typography>
+                <Button
+                  fullWidth
+                  color="primary"
+                  variant="contained"
+                  className="mt-3"
+                >
                   Sign In
                 </Button>
+                <Grid
+                  container
+                  flexDirection={'row'}
+                  justifyContent={'center'}
+                  sx={{ mt: 1, mb: 2 }}
+                >
+                  <Typography variant="h3" className="text-center">
+                    Don't have an account?
+                  </Typography>
+                  <Typography
+                    variant="h3"
+                    className="text-center font-semibold"
+                    color={'primary'}
+                  >
+                    Sign Up
+                  </Typography>
+                </Grid>
+                <Divider textAlign="center">Or</Divider>
+                <Grid container spacing={2} sx={{ mt: 1 }}>
+                  <Grid item xs={6}>
+                    <IconButton className="bg-[#f5f7f9] rounded-none w-full text-black">
+                      <img
+                        src={Images?.Google}
+                        width={22}
+                        height={22}
+                        className="mr-1"
+                      />{' '}
+                      Continue with Google
+                    </IconButton>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <IconButton className="bg-[#f5f7f9] rounded-none w-full text-black">
+                      <img
+                        src={Images?.Facebook}
+                        width={22}
+                        height={22}
+                        className="mr-1"
+                      />{' '}
+                      Continue with Facebook
+                    </IconButton>
+                  </Grid>
+                </Grid>
               </form>
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={7} className="h-screen">
-          <img src={Images?.AuthBanner} className="object-fit h-full w-full" />
+        <Grid item sm={0} md={7}>
+          <img src={Images?.AuthBanner} className="object-cover w-full " />
         </Grid>
       </Grid>
     </>

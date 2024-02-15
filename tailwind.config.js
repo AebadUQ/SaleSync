@@ -11,8 +11,10 @@ module.exports = {
         leftShadow: '-3px 0 5px -5px rgba(0,0,0,0.5);',
       },
       colors: {
-        primary: '#18B5B7',
+        primary: '#3D3B40',
         primaryHover: '#31BDBF',
+        secondary: '#525CEB',
+        ternary: '#BFCFE7',
         primaryDisabled: '#8BDADB',
         // primaryDisabled: '#CBEEEF',
         lightBlue: '#CBEEEF',
